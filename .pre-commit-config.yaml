@@ -1,11 +1,25 @@
 repos:
+  # pre-commit-golang has a bunch of additional checks, but doesn't seem to
+  # install the tools they need, which isn't how pre-commit is supposed to work.
   - repo: https://github.com/jessp01/pre-commit-golang.git
-    rev: v0.5.7
+    rev: 206c30e511cb64dd2c9586c2991028ae8a2046d1 # v0.5.10
     hooks:
       - id: go-fmt
-        #- id: go-imports
-        #- id: go-vet
-        #- id: go-lint
-        #- id: go-critic
-      - id: go-ineffassign
       - id: shellcheck
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c # v6.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: https://github.com/codespell-project/codespell
+    rev: 63c8f8312b7559622c0d82815639671ae42132ac # v2.4.1
+    hooks:
+      - id: codespell
+        files: '\.md$'
+        args: ["-I", ".codespell-ignored"]
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: 7339935a3036f096ee0d7f1f047a9ec41707d4c1 # v0.20.0
+    hooks:
+      - id: markdownlint-cli2
+        files: '\.md$'
