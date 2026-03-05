@@ -25,6 +25,8 @@ so we can validate it before we try to `git commit`?
 [Schema linter](https://www.json-schema-linter.com) and `pajv` can be used to
 validate a `.yaml` against a schema.
 
+**The schema is here:** <https://raw.githubusercontent.com/chainguard-dev/melange/main/pkg/config/schema.json>
+
 ## Top-level Sections
 
 Preferred order for top-level sections:
